@@ -148,17 +148,32 @@ button {
 <!-- MEMORY PAGE -->
 <div id="memory">
     <h2>📸 Our Memories</h2>
+    <style>
+        .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+    </style>
     <div class="gallery">
         <img src="image/0094F00C-45D9-4F23-ACCE-C5EFE37E7ABF_1_105_c.jpeg" alt="">
         <img src="image/021388E5-DE06-4382-9011-AC6F950A0496_1_105_c.jpeg" alt="">
         <img src="image/B3591317-81BE-41A5-891C-40A249B53E1A_1_105_c.jpeg" alt="">
-    <style>
-        .memory-photo {
-  width: 100%;
-  max-width: 320px;
-  height: auto; /* keeps photo ratio */
-}
-    </style>
+        <img src="image/1.jpeg" alt="">
+        <img src="image/2.JPG" alt="">
+        <img src="image/3.jpeg" alt="">
+        <img src="image/4.jpeg" alt="">
+        <img src="image/5.jpeg" alt="">
+        <img src="image/6.JPG" alt="">
+        <img src="image/7.JPG" alt="">
+        <img src="image/10.JPG" alt="">
     </div>
 </div>
 
