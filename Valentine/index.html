@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Valentine 💖</title>
+
+<style>
+body {
+    font-family: "Comic Sans MS", cursive;
+    background: linear-gradient(to bottom, #ffb6c1, #ffc0cb);
+    text-align: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+h1, h2 {
+    color: #d63384;
+}
+
+.kitty {
+    width: 180px;
+    max-width: 80%;
+}
+
+/* BUTTONS */
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    margin: 10px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.yes {
+    background-color: #ff4d6d;
+    color: white;
+}
+
+.no {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* TOP SECTION */
+#question {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 350px;
+    animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* MEMORY */
+#memory {
+    display: none;
+    margin-top: 40px;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 8px;
+    border: 4px solid white;
+    display: none;
+}
+
+/* FLOATING HEARTS */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- QUESTION PAGE -->
+<div id="question">
+    <h1>💘 Do u love me? 💘</h1>
+    <img src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=750" class="photo">
+    <style>
+  .photo {
+    width: 90%;
+    max-width: 300px;
+    display: block;
+    margin: 15px auto;
+    border-radius: 12px;
+  }
+    </style>
+    <div>
+        <button class="yes" onclick="sayYes()">Yes 💕</button>
+        <button class="no" onclick="sayNo()">No 💔</button>
+    </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="kissModal">
+    <div class="modal-content">
+        <h2>Yayyyy 😽💖</h2>
+        <img src="https://media.tenor.com/RbppylNC_m0AAAAM/mochi-mochi-peach-cat.gif" class="kitty" width="100">
+        <p>You are my Favourite Person 💕</p>
+        <button class="yes" onclick="continueLove()">Continue 💗</button>
+    </div>
+</div>
+
+<!-- MEMORY PAGE -->
+<div id="memory">
+    <h2>📸 Our Memories</h2>
+    <h3>I love U bby, Mwa Mwa Mwa</h3>
+    <style>
+        .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+    </style>
+    <div class="gallery">
+        <img src="image/0094F00C-45D9-4F23-ACCE-C5EFE37E7ABF_1_105_c.jpeg" alt="">
+        <img src="image/021388E5-DE06-4382-9011-AC6F950A0496_1_105_c.jpeg" alt="">
+        <img src="image/B3591317-81BE-41A5-891C-40A249B53E1A_1_105_c.jpeg" alt="">
+        <img src="image/1.jpeg" alt="">
+        <img src="image/2.JPG" alt="">
+        <img src="image/3.jpeg" alt="">
+        <img src="image/4.jpeg" alt="">
+        <img src="image/6.JPG" alt="">
+        <img src="image/7.JPG" alt="">
+        <img src="image/10.JPG" alt="">
+    </div>
+</div>
+
+<script>
+function sayYes() {
+    document.getElementById("kissModal").style.display = "flex";
+}
+
+function continueLove() {
+    document.getElementById("kissModal").style.display = "none";
+    document.getElementById("question").style.display = "none";
+    document.getElementById("memory").style.display = "block";
+    showMemories();
+}
+
+function sayNo() {
+    alert("😿 Kitty is sad... please choose Yes!");
+}
+
+// SHOW MEMORIES ONE BY ONE
+function showMemories() {
+    const photos = document.querySelectorAll(".gallery img");
+    let index = 0;
+
+    const interval = setInterval(() => {
+        if (index < photos.length) {
+            photos[index].style.display = "block";
+            index++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 1000);
+}
+
+// FLOATING HEARTS
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}, 500);
+</script>
+
+</body>
+</html>
+
